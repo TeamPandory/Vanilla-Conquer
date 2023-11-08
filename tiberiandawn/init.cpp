@@ -2139,27 +2139,10 @@ void Parse_INI_File(void)
  *=============================================================================================*/
 int Version_Number(void)
 {
-    const char* demo_text = Is_Demo() ? "DEMO " : "";
-
-    // Only print the git tag version number if it starts with 'v'
-    if (*GitTag == '\0' || GitUncommittedChanges || *GitTag != 'v') {
-        snprintf(VersionText,
+    snprintf(VersionText,
                  sizeof(VersionText),
-                 "%sr%d %s%s",
-                 demo_text,
-                 GitRevision,
-                 (GitUncommittedChanges ? "~" : ""),
+                 "@TeamPandory:%s",
                  GitShortSHA1);
-    } else {
-        snprintf(VersionText,
-                 sizeof(VersionText),
-                 "%s%s %s%s",
-                 demo_text,
-                 GitTag,
-                 (GitUncommittedChanges ? "~" : ""),
-                 GitShortSHA1);
-    }
-
     return (1);
 }
 
